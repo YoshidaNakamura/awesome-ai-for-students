@@ -1,0 +1,57 @@
+name: 💡 Suggest a tool
+description: Suggest an AI tool that genuinely helped you learn
+title: "[Tool] "
+labels: ["suggestion"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Tool name
+      placeholder: e.g. NotebookLM
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Official link
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Best-fit category
+      options:
+        - General AI assistants
+        - Writing & editing
+        - Research & reading papers
+        - Notes & knowledge management
+        - Studying, flashcards & memory
+        - Math, science & data
+        - Coding & CS learning
+        - Productivity & focus
+        - Slides, posters & design
+        - Languages & speaking
+        - Accessibility & inclusion
+        - Career
+        - Run AI free & private (local)
+        - Learn AI itself
+        - Student perks
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: How did it help you learn?
+      description: One or two honest sentences. This is our bar for inclusion.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Quick checks
+      options:
+        - label: It helps students learn (not just "do my work for me")
+          required: true
+        - label: The link is official and working (no affiliate links)
+          required: true
