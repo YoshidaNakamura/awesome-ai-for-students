@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Awesome AI for Students — browse the list</title>
+<meta name="description" content="A student-tested, free-first directory of AI tools that actually help you learn. Search and filter by category.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070b14; --bg2:#0b1120; --card:#0e1626; --card2:#121c30;
+  --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.16);
+  --text:#eef2fb; --dim:#93a0bd; --dim2:#5f6b86;
+  --cyan:#54e0ff; --green:#3ef0a6; --gold:#ffcf5c; --violet:#b69bff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(800px 500px at 15% -5%,rgba(84,224,255,.10),transparent 60%),
+    radial-gradient(700px 500px at 90% 0%,rgba(62,240,166,.09),transparent 60%),var(--bg)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+/* header */
+header{padding:54px 0 26px;text-align:center}
+.kicker{font-family:'Space Grotesk';font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--cyan);font-weight:600}
+h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(32px,6vw,56px);line-height:1.02;margin:12px 0 8px}
+h1 .g{background:linear-gradient(120deg,var(--cyan),var(--green));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.tag{color:var(--dim);font-size:clamp(15px,2vw,18px);max-width:620px;margin:0 auto}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:'Space Grotesk';font-weight:600;font-size:14px;
+  padding:11px 19px;border-radius:12px;border:1px solid var(--line2);background:rgba(255,255,255,.05);transition:.2s;cursor:pointer}
+.btn:hover{background:rgba(255,255,255,.1);transform:translateY(-1px)}
+.btn.star{background:linear-gradient(120deg,var(--gold),#ffb13b);color:#1a1206;border-color:transparent;box-shadow:0 6px 20px rgba(255,177,59,.25)}
+.stats{color:var(--dim2);font-size:13px;margin-top:16px;font-family:'Space Grotesk'}
+
+/* controls */
+.controls{position:sticky;top:0;z-index:20;padding:16px 0 14px;margin-top:8px;
+  background:linear-gradient(180deg,var(--bg) 70%,rgba(7,11,20,.0));backdrop-filter:blur(6px)}
+.search{position:relative;max-width:560px;margin:0 auto 14px}
+.search input{width:100%;background:var(--card);border:1px solid var(--line2);border-radius:14px;
+  padding:14px 16px 14px 44px;color:var(--text);font-size:15px;font-family:'Inter';outline:none;transition:.2s}
+.search input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(84,224,255,.14)}
+.search .mag{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:16px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.chip{font-family:'Inter';font-size:13px;font-weight:500;color:var(--dim);background:rgba(255,255,255,.04);
+  border:1px solid var(--line);border-radius:30px;padding:7px 13px;cursor:pointer;transition:.18s;white-space:nowrap}
+.chip:hover{color:var(--text);border-color:var(--line2)}
+.chip.on{color:var(--text);background:rgba(84,224,255,.14);border-color:rgba(84,224,255,.5)}
+.chip .ct{color:var(--dim2);font-size:11px;margin-left:4px}
+.tagrow{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.tchip{font-size:12px;font-weight:600;border-radius:30px;padding:6px 12px;cursor:pointer;border:1px solid transparent;background:rgba(255,255,255,.05);color:var(--dim);transition:.18s}
+.tchip[data-tag=free].on{background:rgba(62,240,166,.16);color:var(--green);border-color:rgba(62,240,166,.5)}
+.tchip[data-tag=student].on{background:rgba(182,155,255,.16);color:var(--violet);border-color:rgba(182,155,255,.5)}
+.tchip[data-tag=privacy].on{background:rgba(84,224,255,.16);color:var(--cyan);border-color:rgba(84,224,255,.5)}
+.tchip[data-tag=top].on{background:rgba(255,207,92,.16);color:var(--gold);border-color:rgba(255,207,92,.5)}
+.tchip:hover{color:var(--text)}
+
+/* grid */
+.count{text-align:center;color:var(--dim2);font-size:13px;margin:6px 0 18px;font-family:'Space Grotesk'}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;padding-bottom:40px}
+.cardlink{display:block}
+.card{background:linear-gradient(180deg,var(--card),rgba(14,22,38,.5));border:1px solid var(--line);
+  border-radius:16px;padding:18px;height:100%;transition:.2s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 14px 34px rgba(0,0,0,.4)}
+.card::after{content:"↗";position:absolute;top:15px;right:16px;color:var(--dim2);transition:.2s;font-size:15px}
+.card:hover::after{color:var(--cyan);transform:translate(2px,-2px)}
+.card .cat{font-size:11.5px;color:var(--dim2);font-family:'Space Grotesk';letter-spacing:.02em}
+.card .nm{font-family:'Space Grotesk';font-weight:600;font-size:17px;margin:3px 0 7px;padding-right:18px}
+.card .ds{color:var(--dim);font-size:13.5px;line-height:1.5}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px}
+.b{font-size:10.5px;font-weight:700;font-family:'Space Grotesk';letter-spacing:.03em;padding:3px 8px;border-radius:20px}
+.b.free{background:rgba(62,240,166,.14);color:var(--green)}
+.b.student{background:rgba(182,155,255,.14);color:var(--violet)}
+.b.privacy{background:rgba(84,224,255,.14);color:var(--cyan)}
+.b.top{background:rgba(255,207,92,.14);color:var(--gold)}
+.empty{text-align:center;color:var(--dim);padding:60px 20px;grid-column:1/-1}
+
+footer{border-top:1px solid var(--line);padding:30px 0 60px;text-align:center;color:var(--dim2);font-size:13px}
+footer a{color:var(--dim);text-decoration:underline}
+.notice{max-width:760px;margin:0 auto 8px;font-size:12px;color:var(--dim2)}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="kicker">Awesome · curated · free-first</div>
+  <h1>AI tools that actually help you <span class="g">learn</span></h1>
+  <p class="tag">A student-tested directory — organized by what you're trying to get done. No hype, no affiliate links. Made to make you smarter, not to do your thinking for you.</p>
+  <div class="cta">
+    <!-- TODO: replace YoshidaNakamura with your GitHub username after publishing -->
+    <a class="btn star" href="https://github.com/YoshidaNakamura/awesome-ai-for-students" target="_blank" rel="noopener">★ Star on GitHub</a>
+    <a class="btn" href="https://github.com/YoshidaNakamura/awesome-ai-for-students#-how-to-use-ai-without-cheating-yourself" target="_blank" rel="noopener">📖 Read the guide</a>
+  </div>
+  <div class="stats" id="stats">Loading…</div>
+</header>
+
+<div class="controls">
+  <div class="wrap">
+    <div class="search">
+      <span class="mag">⌕</span>
+      <input id="q" type="search" placeholder="Search tools — e.g. flashcards, papers, slides, free…" autocomplete="off" aria-label="Search tools">
+    </div>
+    <div class="chips" id="cats"></div>
+    <div class="tagrow" id="tags">
+      <div class="tchip" data-tag="free">🆓 Free</div>
+      <div class="tchip" data-tag="student">🎓 Student</div>
+      <div class="tchip" data-tag="privacy">🔒 Private</div>
+      <div class="tchip" data-tag="top">⭐ Top picks</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer class="wrap">
+  <p class="notice">Tools belong to their respective owners. This directory is released under CC0 — copy it, fork it, share it.</p>
+  <p>Built by a student, for students · <a href="https://github.com/YoshidaNakamura/awesome-ai-for-students" target="_blank" rel="noopener">Contribute a tool →</a></p>
+</footer>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  const TOOLS = window.TOOLS || [], CATS = window.CATEGORIES || [];
+  const catName = id => (CATS.find(c=>c.id===id)||{}).name || id;
+  const catIcon = id => (CATS.find(c=>c.id===id)||{}).icon || "•";
+  const TAGLABEL = {free:"Free",student:"Student",privacy:"Private",top:"Top"};
+  let activeCat = "all", activeTags = new Set(), query = "";
+
+  // header stats
+  const nFree = TOOLS.filter(t=>t.t.includes("free")).length;
+  document.getElementById("stats").textContent =
+    `${TOOLS.length} hand-picked tools · ${nFree} free · ${CATS.length} categories`;
+
+  // category chips
+  const catsEl = document.getElementById("cats");
+  function chip(id,label,count){ const d=document.createElement("div"); d.className="chip"+(id===activeCat?" on":"");
+    d.dataset.cat=id; d.innerHTML=label+`<span class="ct">${count}</span>`; d.onclick=()=>{activeCat=id;render();syncChips();}; return d; }
+  function buildChips(){ catsEl.innerHTML="";
+    catsEl.appendChild(chip("all","All",TOOLS.length));
+    CATS.forEach(c=>{ const n=TOOLS.filter(t=>t.c===c.id).length; if(n) catsEl.appendChild(chip(c.id,c.icon+" "+c.name,n)); });
+  }
+  function syncChips(){ [...catsEl.children].forEach(ch=>ch.classList.toggle("on",ch.dataset.cat===activeCat)); }
+
+  // tag toggles
+  document.querySelectorAll(".tchip").forEach(tc=>tc.onclick=()=>{
+    const t=tc.dataset.tag; activeTags.has(t)?activeTags.delete(t):activeTags.add(t);
+    tc.classList.toggle("on"); render();
+  });
+
+  // search
+  const qEl=document.getElementById("q");
+  qEl.addEventListener("input",()=>{ query=qEl.value.trim().toLowerCase(); render(); });
+
+  function match(t){
+    if(activeCat!=="all" && t.c!==activeCat) return false;
+    for(const tag of activeTags){ if(!t.t.includes(tag)) return false; }
+    if(query){ const hay=(t.n+" "+t.d+" "+catName(t.c)).toLowerCase(); if(!hay.includes(query)) return false; }
+    return true;
+  }
+  function render(){
+    const grid=document.getElementById("grid"); const list=TOOLS.filter(match);
+    document.getElementById("count").textContent =
+      list.length===TOOLS.length ? `Showing all ${list.length} tools` : `${list.length} of ${TOOLS.length} tools`;
+    if(!list.length){ grid.innerHTML=`<div class="empty">No tools match that. Try clearing a filter or <a href="#" onclick="location.reload();return false" style="color:var(--cyan)">reset</a>.</div>`; return; }
+    grid.innerHTML="";
+    list.forEach(t=>{
+      const a=document.createElement("a"); a.className="cardlink"; a.href=t.u; a.target="_blank"; a.rel="noopener";
+      const badges=t.t.map(tag=>`<span class="b ${tag}">${tag==="top"?"⭐ ":""}${TAGLABEL[tag]||tag}</span>`).join("");
+      a.innerHTML=`<div class="card"><div class="cat">${catIcon(t.c)} ${catName(t.c)}</div>
+        <div class="nm">${t.n}</div><div class="ds">${t.d}</div><div class="badges">${badges}</div></div>`;
+      grid.appendChild(a);
+    });
+  }
+  buildChips(); render();
+})();
+</script>
+</body>
+</html>
