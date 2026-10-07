@@ -58,6 +58,7 @@ window.TOOLS = [
   { n:"RemNote", u:"https://www.remnote.com", c:"study", t:["free"], d:"Note-taking with spaced repetition built in — notes become flashcards." },
   { n:"Khanmigo", u:"https://www.khanmigo.ai", c:"study", t:["student","top"], d:"Khan Academy's AI tutor that guides you to the answer, not past it." },
   { n:"Khan Academy", u:"https://www.khanacademy.org", c:"study", t:["free"], d:"Free world-class courses across math, science, and the humanities." },
+  { n:"SummarizAI", u:"https://summarizai.ink", c:"study", t:["free"], d:"Chrome extension that summarizes YouTube lectures on the page, with chapters and flashcards to review." },
 
   // Math, science & data
   { n:"Wolfram Alpha", u:"https://www.wolframalpha.com", c:"math", t:["free","student","top"], d:"Computational engine for math/physics/chem with step-by-step solutions." },

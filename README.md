@@ -113,6 +113,7 @@ Active recall + spaced repetition is the most evidence-backed way to remember an
 - [RemNote](https://www.remnote.com) — Note-taking with spaced repetition built in — turn notes into flashcards automatically. 🆓
 - [Khanmigo](https://www.khanmigo.ai) — Khan Academy's AI tutor that guides you to the answer instead of handing it over. 🎓 ⭐
 - [Khan Academy](https://www.khanacademy.org) — Free world-class courses across math, science, and the humanities. 🆓
+- [SummarizAI](https://summarizai.ink) — Chrome extension that summarizes YouTube lectures on the page, then turns them into chapters and flashcards to review. 🆓
 
 ## 🧮 Math, science & data
 Solve, *and understand how it was solved.*
